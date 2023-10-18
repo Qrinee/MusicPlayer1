@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>♫ MusicPlayer</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/4e0d4265cd.js" crossorigin="anonymous"></script>
+    <script defer async src="script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="icon.png">
+</head>
+<body onload="refresh(), generateData(), addEventListeners()">
+    <header>
+    <h1><i class="fa-solid fa-music"></i>
+        MusicPlayer</h1>
+    <input type="text" id="searchBar" placeholder="Szukaj..." onkeyup="search(this)">
+    <button id="mode" onclick="mode()">
+        <i class="fa-solid fa-circle-half-stroke"></i>
+    </button>
+    </header>
+    <section>
+    <div id="holder"></div>
+    <div id="browsefile">
+        <button id="exit" onclick="document.getElementById('browsefile').style.display = 'none'">x</button>
+        <h2 id="font">Dodaj swoją muzykę</h2>
+        <hr>
+        <p>z pliku</p>
+        <input type="file" name="file" id="inputTag" class="inputfile" accept="audio/*"/><br>
+        <input type="text" placeholder="Autor" id="auth" autocomplete="off">
+        <input type="text" placeholder="Tytuł" id="titl" autocomplete="off">
+        <hr>
+        <p>lub z youtuba</p>
+        <input type="text" placeholder="typu: youtube.com/watch?v=rfwq23r&" id="link" autocomplete="off">
+        <hr>
+        <input type="submit" value="Wyślij" id="send" onclick="addMusic(), generateData(), addEventListeners()">
+        
+    </div>
+    </section>
+
+    <button id="add" onclick="document.getElementById('browsefile').style.display = 'block';">Dodaj swoją muzykę</button>
+    <section id="bottom">
+        <input type="range" id="duration" min="1" max="100" value="1" onclick="change()">
+        <div id="bellow">
+            <div id="image"></div>
+            <div id="all">
+                <h3 id="artist">&nbsp;</h3>
+                <p id="title">&nbsp;</p> 
+            </div>
+            <div id="previoustrack" onclick="previous()">
+                <i class="fa-solid fa-backward-step"></i>
+            </div>
+            <div id="pause" onclick="pause(this)">
+                <i class="fa-solid fa-pause" id="iconPause"></i>
+            </div>
+            <div id="nexttrack" onclick="next()">
+                <i class="fa-solid fa-forward-step"></i>
+            </div>
+            <div id="loop" onclick="this.classList.toggle('loop'); loop()">
+                <i class="fa-sharp fa-solid fa-rotate-left"></i>
+            </div>
+            <div id="vol">
+                <i class="fa-solid fa-volume-high" id="iconVolume"></i>
+                <input type="range" id="volume" onclick="volume(this)"  value="100">
+            </div>
+        </div>
+    </section>
+    <!-- <script src="./renderer.js"></script> -->
+</body>
+</html>
